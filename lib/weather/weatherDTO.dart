@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+part 'weatherDTO.g.dart';
 
 @JsonSerializable()
 class WeatherResponse {
@@ -9,6 +10,7 @@ class WeatherResponse {
 @JsonSerializable()
 class WeatherData {
     List<Timeline>? timelines;
+
     WeatherData({required this.timelines});
 }
 
@@ -20,7 +22,6 @@ class Timeline {
     String? timestep;
 
     Timeline({this.endTime, this.intervals, this.startTime, this.timestep});
-
 }
 
 @JsonSerializable()
@@ -29,7 +30,6 @@ class Interval {
     Values? values;
 
     Interval({required this.startTime, required this.values});
-
 }
 
 @JsonSerializable()
@@ -37,5 +37,4 @@ class Values {
     double? temperature;
 
     Values({required this.temperature});
-
 }

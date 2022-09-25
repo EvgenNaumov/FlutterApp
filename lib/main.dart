@@ -1,4 +1,3 @@
-import 'package:app/rickmortydata/RickMortyDTO.dart';
 import 'package:app/rickmortydata/RickMortyWidget.dart';
 import 'package:app/ui/SecondWidget.dart';
 import 'package:flutter/material.dart';
