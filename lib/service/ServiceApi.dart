@@ -1,13 +1,14 @@
 import 'package:app/rickmortydata/RickMortyDTO.dart';
 import 'package:app/weather/weatherDTO.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import '../util.dart';
 
  abstract class ServiceApi {
-   final Dio client = Dio();
+
   Future<RickMorty> getDataDio() async{
     return Future(() => RickMorty());
   }
@@ -17,9 +18,12 @@ import '../util.dart';
   }
 
   Future<WeatherResponse> getDataWeather() async{
-    return Future(() => WeatherResponse(data: null));
+    return Future(() => WeatherResponse());
   }
 
+  Future<void> getStreameWeather() async{
+    return Future(() => WeatherResponse());
+  }
   // final Dio client = Dio();
 
   // Future<RickMorty> getData() async {
@@ -41,21 +45,6 @@ import '../util.dart';
   //   }
   // }
 
- Future<WeatherResponse?> getWeather() async {
-     var response = await client.get('$BASE_URL$DOMEN_URL',queryParameters:
-     {'location':[33.122334,33.678990],
-     'lields':'',
-     'timesteps':'',
-     'units':'',
-      'api':API_KEY
-     });
-
-     if (completedCodes.contains(response.statusCode)) {
-       return WeatherResponse(data: response.data).fromJson(response.data);
-     } else {
-       throw Exception('${response.statusCode} ${response.statusMessage}');
-     }
- }
 }
 
 
