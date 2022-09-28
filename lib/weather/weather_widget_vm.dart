@@ -4,28 +4,32 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class WeatherStateWidget extends StatelessWidget{
+class WeatherStateWidget extends StatelessWidget {
+  const WeatherStateWidget({Key? key}) : super(key: key);
 
-  const WeatherStateWidget(this.serviceApi, {Key? key}):super(key: key);
-
-  final ServiceApi serviceApi;
-
-  static Widget create(ServiceApi serviceApi){
+  static Widget create(ServiceApi serviceApi) {
     return ChangeNotifierProvider(
-      child: WeatherStateWidget(serviceApi),
-      create: (context) => ViewModelMain(),
-
+      child: const WeatherStateWidget(),
+      create: (context) => ViewModelMain(serviceApi),
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
+    final model = context.read<ViewModelMain>();
     return Scaffold(
       appBar: AppBar(
-        title: Text('Second screen'),
-      )
-      ,
+        title: Text('weather'),
+      ),
+      body: Center(
+        child: context.watch<ViewModelMain>().currentState?.isLoading == LoadingState.loading ?
+        const SizedBox(
+          height: 40,
+          width: 40,
+          child: const CircularProgressIndicator(color: Colors.black,),
+        )
+        : Text(context.watch<ViewModelMain>().currentState?.response?.data?.timelines?.first?.timestep??''),
+      ),
     );
   }
 }

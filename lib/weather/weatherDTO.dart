@@ -12,7 +12,7 @@ class WeatherResponse {
 
 @JsonSerializable()
 class WeatherData {
-    List<Timeline>? timelines;
+    List<Timeline?>? timelines;
 
     WeatherData({required this.timelines});
 
