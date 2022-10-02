@@ -1,4 +1,5 @@
-import 'package:app/service/ServiceApi.dart';
+import 'package:app/service/ServiceApiDioImpl.dart';
+import 'package:app/service/serviceApiWeather.dart';
 import 'package:app/weather/vm/view_model_main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,7 @@ import 'package:provider/provider.dart';
 class WeatherStateWidget extends StatelessWidget {
   const WeatherStateWidget({Key? key}) : super(key: key);
 
-  static Widget create(ServiceApi serviceApi) {
+  static Widget create(ServiceApiWeather serviceApi) {
     return ChangeNotifierProvider(
       child: const WeatherStateWidget(),
       create: (context) => ViewModelMain(serviceApi),
@@ -26,9 +27,11 @@ class WeatherStateWidget extends StatelessWidget {
         const SizedBox(
           height: 40,
           width: 40,
-          child: const CircularProgressIndicator(color: Colors.black,),
+          child: CircularProgressIndicator(color: Colors.black,),
         )
-        : Text(context.watch<ViewModelMain>().currentState?.response?.data?.timelines?.first?.timestep??''),
+            : Text(context.watch<ViewModelMain>().currentState?.response?.data?.timelines?.first.timestep??'',
+          style: const TextStyle(color: Colors.deepOrange),),
+
       ),
     );
   }

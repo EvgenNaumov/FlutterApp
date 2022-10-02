@@ -1,12 +1,13 @@
 import 'package:app/rickmortydata/RickMortyWidget.dart';
 import 'package:app/service/ServiceApi.dart';
 import 'package:app/service/ServiceApiDioImpl.dart';
+import 'package:app/service/serviceApiWeather.dart';
 import 'package:app/ui/SecondWidget.dart';
 import 'package:app/weather/weather_widget_vm.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( MyAppVM());
 }
 
 class MyApp extends StatelessWidget {
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyAppVM extends StatelessWidget{
-  final ServiceApi serviceApi = ServiceApiDioImpl();
+  final ServiceApiWeather serviceApi = ServiceApiWeather();
 
   MyAppVM({super.key});
   @override

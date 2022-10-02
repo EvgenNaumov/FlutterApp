@@ -28,7 +28,7 @@ class Timeline {
 
     Timeline({this.endTime, this.intervals, this.startTime, this.timestep});
 
-    factory Timeline.formJson(Map<String, dynamic> json) => _$TimelineFromJson(json);
+    factory Timeline.fromJson(Map<String, dynamic> json) => _$TimelineFromJson(json);
 }
 
 @JsonSerializable()

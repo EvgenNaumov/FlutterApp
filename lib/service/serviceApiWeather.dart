@@ -12,7 +12,7 @@ class ServiceApiWeather extends ServiceApi{
   Future<WeatherResponse> getDataWeather() async {
     var response = await client.get('$BASE_URL$DOMEN_URL',queryParameters:
     {'location':[33.122334,33.678990],
-      'lields':'',
+      'fields':'',
       'timesteps':'',
       'units':'',
       'api':API_KEY

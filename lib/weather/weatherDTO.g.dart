@@ -19,8 +19,8 @@ Map<String, dynamic> _$WeatherResponseToJson(WeatherResponse instance) =>
     };
 
 WeatherData _$WeatherDataFromJson(Map<String, dynamic> json) => WeatherData(
-      timelines: (json['timelines'] ? List<Timeline>: [])
-          ?.map((e) => Timeline.fromJson(e as Map<String, dynamic>))
+      timelines: (json['timelines'] as List<Timeline>)
+          .map((e) => Timeline.fromJson(e as Map<String, dynamic>))
           .toList()
     );
 

@@ -1,9 +1,11 @@
+import 'package:app/service/ServiceApiDioImpl.dart';
+import 'package:app/service/serviceApiWeather.dart';
 import 'package:app/weather/weatherDTO.dart';
 import 'package:flutter/cupertino.dart';
 import '../../service/ServiceApi.dart';
 
 class ViewModelMain extends ChangeNotifier{
-  final ServiceApi serviceApi;
+  final ServiceApiWeather serviceApi;
   MainState? _state;
   MainState? get currentState => _state;
 
